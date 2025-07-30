@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Вишня или Яблоко</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    .image {
+      width: 150px;
+      height: auto;
+      position: absolute;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="playAndShow()">Нажми, чтобы узнать: вишня или яблоко</button>
+
+  <audio id="audio" src="https://files.catbox.moe/4jf77o.mp3"></audio>
+
+  <img src="img1.jpg" class="image" id="img1" style="top: 10%; left: 10%;">
+  <img src="img2.jpg" class="image" id="img2" style="top: 20%; right: 10%;">
+  <img src="img3.jpg" class="image" id="img3" style="bottom: 20%; left: 5%;">
+  <img src="img4.jpg" class="image" id="img4" style="bottom: 15%; right: 5%;">
+  <img src="img5.jpg" class="image" id="img5" style="top: 40%; left: 40%;">
+  <img src="img6.jpg" class="image" id="img6" style="bottom: 35%; right: 35%;">
+
+  <script>
+    function playAndShow() {
+      const audio = document.getElementById("audio");
+      audio.play();
+
+      for (let i = 1; i <= 6; i++) {
+        const img = document.getElementById("img" + i);
+        setTimeout(() => {
+          img.classList.add("show");
+        }, i * 300); // задержка для плавного появления
+      }
+    }
+  </script>
+
+</body>
+</html>
